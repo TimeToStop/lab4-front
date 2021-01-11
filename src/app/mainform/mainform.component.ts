@@ -37,11 +37,4 @@ export class MainformComponent implements OnInit {
 
   signUp(): void {
   }
-
-  reset(): void {
-    this.mainform.reset({
-      username : '',
-      password : ''
-    });
-  }
 }

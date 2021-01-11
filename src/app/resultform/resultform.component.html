@@ -1,0 +1,35 @@
+<form [formGroup]="resultform">
+    <div>
+        <label for="input-x">X:</label>
+        <select id="input-x" formControlName="x">
+            <option selected disabled>Select X</option>
+            <option value="-4">-4</option>
+            <option value="-3">-3</option>
+            <option value="-2">-2</option>
+            <option value="-1">-1</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <div>
+        <label for="input-y">Y (-3, 3):</label>
+        <input type="text" id="input-y" formControlName="y"/>
+    </div>
+    <div>
+        <label for="input-r">R:</label>
+        <select id="input-r" formControlName="r">
+            <option selected disabled>Select R</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <div>
+        <button type="button" (click)="send();">Send</button>
+        <button type="button" (click)="clearTable();">Clear Table</button>
+    </div>
+</form>

@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultsComponent } from './results/results.component';
 import { TableComponent } from './table/table.component';
+import { ResultformComponent } from './resultform/resultform.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TableComponent } from './table/table.component';
     GreetingComponent,
     MainformComponent,
     ResultsComponent,
-    TableComponent
+    TableComponent,
+    ResultformComponent
   ],
   imports: [
     BrowserModule,
