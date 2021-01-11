@@ -1,0 +1,17 @@
+<table class="table">
+    <tr>
+        <td>X:</td>
+        <td>Y:</td>
+        <td>R:</td>
+        <td>Result:</td>
+        <td>Time:</td>
+    </tr>
+
+    <ng-container *ngFor="let result of results">
+        <td>{{ result.x }}</td>
+        <td>{{ result.y }}</td>
+        <td>{{ result.r }}</td>
+        <td>{{ result.result }}</td>
+        <td>{{ result.time }}</td>
+    </ng-container>
+</table>
