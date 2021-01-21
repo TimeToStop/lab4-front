@@ -4,8 +4,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import * as bcrypt from 'bcryptjs';
-
 @Component({
   selector: 'app-mainform',
   templateUrl: './mainform.component.html',
@@ -25,22 +23,11 @@ export class MainformComponent implements OnInit {
   ngOnInit(): void {
   }
 
- hashCode(val : string) {
-    let hash = 0, i, chr;
-    for (i = 0; i < val.length; i++) {
-      chr   = val.charCodeAt(i);
-      hash  = ((hash << 5) - hash) + chr;
-      hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
-  }
-
-
   signIn(): void {
     this.http
         .post('./rest/login',JSON.stringify({
           username : this.mainform.controls['username'].value,
-          password : this.hashCode(this.mainform.controls['password'].value)
+          password : this.mainform.controls['password'].value
         }),{
           headers : new HttpHeaders ({'Content-Type': 'application/json'})
         }).subscribe((data : any) => {
@@ -56,7 +43,7 @@ export class MainformComponent implements OnInit {
     this.http
       .post('./rest/registration', JSON.stringify({
         username : this.mainform.controls['username'].value,
-        password : this.hashCode(this.mainform.controls['password'].value)
+        password : this.mainform.controls['password'].value
       }),{
         headers : new HttpHeaders ({'Content-Type': 'application/json'})
       }).subscribe((data : any) => {

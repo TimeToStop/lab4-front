@@ -1,5 +1,4 @@
 import {DotsService} from "./dotservice";
-import {OnInit} from "@angular/core";
 import {Result} from "./result";
 import {RService} from "./rservice";
 
@@ -141,7 +140,9 @@ export class Image  {
       ctx.fillText('0', ox + d, oy - d);
 
       for(let dot of dots) {
-        this.drawDot(ctx, dot);
+        if (Math.abs(this.r - dot.r) < 1e-1) {
+          this.drawDot(ctx, dot);
+        }
       }
     }
   }
