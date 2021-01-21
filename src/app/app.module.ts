@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResultsComponent } from './results/results.component';
 import { TableComponent } from './table/table.component';
 import { ResultformComponent } from './resultform/resultform.component';
+import {DotsService} from "./utils/dotservice";
+import {RService} from "./utils/rservice";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { ResultformComponent } from './resultform/resultform.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ DotsService, RService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -1,16 +1,18 @@
 <form [formGroup]="mainform">
     <div class="holder">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" formControlName="username"/>
+        <div class="block-wrapper">
+            <div class="block">
+                <label for="username">Username:</label>
+                <input type="text" id="username" formControlName="username"/>
+            </div>
+            <div class="block">
+                <label for="password">Password:</label>
+                <input type="password" id="password" formControlName="password"/>
+            </div>
         </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" formControlName="password"/>
-        </div>
-        <div>
-            <button type="button" (click)="signIn()">Sign In</button>
-            <button type="button" (click)="signUp()">Sign Up</button>
+        <div class="block">
+            <button type="button" class="button" (click)="signIn()">Sign In</button>
+            <button type="button" class="button" (click)="signUp()">Sign Up</button>
         </div>
     </div>
-</form> 
+</form>

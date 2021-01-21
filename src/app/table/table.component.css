@@ -1,0 +1,13 @@
+
+table {
+  width: 80%;
+  margin: 0 auto;
+}
+
+table td {
+  text-align: center;
+}
+
+table, td, tr {
+  border: 1px solid black;
+}

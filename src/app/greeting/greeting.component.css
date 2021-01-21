@@ -1,5 +1,69 @@
+/*@font-face {*/
+/*  font-family: 'main-font';*/
+/*  src: url('../fonts/main-font.ttf') format("opentype");*/
+/*}*/
+
+* {
+  font-family: 'main-font';
+}
+
+#error {
+  text-align: center;
+  color: #FF0000;
+}
+
 .content {
-    width: 80%;
-    text-align: center;
-    margin: 0 auto;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  background-color: #f8f6f6;
+}
+
+.head-label {
+  display: inline-block;
+  margin: 5px 0px;
+  color: #696969;
+  font-size: 30px;
+}
+
+.maininfo {
+  background-color: #353535;
+  color: #d6d5d5;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.content-header {
+  text-align: center;
+  margin: 0px;
+  font-size: 35px;
+}
+
+.block {
+  text-align: center;
+  margin: 5px;
+}
+
+.block-wrapper {
+  font-size: 17px;
+  color: #696969;
+  margin: 15px 0;
+}
+
+.button {
+  background-color: #F6744B;
+  padding: 8px;
+  color: #FFFFFF;
+  border: none;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #e64919;
 }
