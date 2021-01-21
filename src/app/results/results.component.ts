@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Image, Point} from "../utils/image";
 import {DotsService} from "../utils/dotservice";
 import {Result} from "../utils/result";
@@ -26,7 +26,9 @@ export class ResultsComponent implements OnInit {
   }
 
   logout() {
-    this.http.get('/rest/logout');
+    this.http.post('/rest/logout', JSON.stringify({}), {
+      headers : new HttpHeaders ({'Content-Type': 'application/json'})
+    });
   }
 
   imageClick(e : any) : void {
@@ -34,12 +36,12 @@ export class ResultsComponent implements OnInit {
     let x = e.x - rect.left;
     let y = e.y - rect.top;
     let p : Point = this.image.clicked({x : x , y : y});
-    this.http.get('./rest/image', {
-      params : {
-        x : p.x.toString(),
-        y : p.y.toString(),
-        r : this.image.r.toString()
-      }
+    this.http.post('./rest/image', JSON.stringify({
+      x : p.x.toString(),
+      y : p.y.toString(),
+      r : this.image.r.toString()
+    }), {
+      headers : new HttpHeaders ({'Content-Type': 'application/json'})
     }).subscribe((data : any) => {
       if (!data.hasError) {
         let dots : Result[] = this.dots;

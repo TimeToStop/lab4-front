@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Result} from "../utils/result";
 import {DotsService} from "../utils/dotservice";
 import {RService} from "../utils/rservice";
@@ -37,24 +37,26 @@ export class ResultformComponent implements OnInit {
   }
 
   send(): void {
-    this.http.get('./rest/dot', {
-      params: {
+
+    this.http
+      .post('./rest/dot', JSON.stringify( {
         x : this.resultform.controls['x'].value,
         y : this.resultform.controls['y'].value,
         r : this.resultform.controls['r'].value,
-      }
-    }).subscribe((data : any) => {
+      }),{
+        headers : new HttpHeaders ({'Content-Type': 'application/json'})
+      }).subscribe((data : any) => {
         let e = document.getElementById('error');
 
         if (data.hasError) {
-           if (e != null) e.innerText = data.error;
+          if (e != null) e.innerText = data.error;
         } else {
           if (e != null) e.innerText = '';
           let result : Result = Object.assign(new Result(), data.data);
           let results : Result[] = this.dots;
           results.push(result);
           this.dotsService.resetDots(results);
-        }
+      }
     });
   }
 
@@ -62,9 +64,13 @@ export class ResultformComponent implements OnInit {
     let e = document.getElementById('error');
     if (e != null) e.innerText = '';
 
-    this.http.get('./rest/clear')
-      .subscribe((data : any) => {
-      if (!data.hasError) {
+    this.http
+      .post('./rest/clear', JSON.stringify({}),{
+        headers : new HttpHeaders ({'Content-Type': 'application/json'})
+      }).subscribe((data : any) => {
+      if (data.hasError) {
+        window.alert(data.error);
+      } else {
         this.dotsService.resetDots([]);
       }
     });

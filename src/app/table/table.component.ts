@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Result } from '../utils/result';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {DotsService} from "../utils/dotservice";
 
 @Component({
@@ -27,7 +27,9 @@ export class TableComponent implements OnInit {
 
   reload(): void {
     this.http
-        .get('./rest/results').subscribe((data : any) => {
+        .post('./rest/results', JSON.stringify({}), {
+          headers : new HttpHeaders({'Content-Type': 'application/json'})
+        }).subscribe((data : any) => {
           if (!data.hasError) {
             this.results = [];
             data.data.forEach((e : any) => {
